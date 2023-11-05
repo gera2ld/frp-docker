@@ -1,0 +1,6 @@
+auth.method = 'token'
+auto.token = 'SECRET_TOKEN'
+bindPort = 7000
+kcpBindPort = 7000
+vhostHTTPPort = 7001
+transport.tls.force = true

@@ -24,7 +24,8 @@ services:
       - "7000:7000/udp"
       - "7001:7001"
     volumes:
-      - ./data/frps.ini:/etc/frps.ini
+      - ./data/frps.toml:/etc/frps.toml
+    command: /frp/frps -c /etc/frps.toml
 ```
 
 Create a `docker-compose.yml` for client:
@@ -37,6 +38,6 @@ services:
     image: gera2ld/frp:latest
     restart: unless-stopped
     volumes:
-      - ./data/frpc.ini:/etc/frpc.ini
-    command: /frp/frpc -c /etc/frpc.ini
+      - ./data/frpc.toml:/etc/frpc.toml
+    command: /frp/frpc -c /etc/frpc.toml
 ```
