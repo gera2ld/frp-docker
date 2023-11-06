@@ -2,13 +2,13 @@ FROM alpine AS downloader
 
 ARG TARGETOS
 ARG TARGETARCH
+ARG FRP_VERSION
 
 RUN apk add curl --no-cache
 
-RUN VERSION=$(curl -fsSI https://github.com/fatedier/frp/releases/latest | sed -n '/tag/s/.*\/v\(.*\)/\1/p' | tr -d \\r | tr -d \\n) \
-  && FRP_FILE=/tmp/frp.tar.gz \
-  && NAME=frp_${VERSION}_${TARGETOS}_${TARGETARCH} \
-  && URL=https://github.com/fatedier/frp/releases/download/v${VERSION}/${NAME}.tar.gz \
+RUN FRP_FILE=/tmp/frp.tar.gz \
+  && NAME=frp_${FRP_VERSION}_${TARGETOS}_${TARGETARCH} \
+  && URL=https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${NAME}.tar.gz \
   && echo Download $URL \
   && curl -fsSLo $FRP_FILE $URL \
   && tar xf $FRP_FILE -C /tmp \
