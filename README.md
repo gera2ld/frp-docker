@@ -25,7 +25,7 @@ services:
       - "7001:7001"
     volumes:
       - ./data/frps.toml:/etc/frps.toml
-    command: /frp/frps -c /etc/frps.toml
+    command: frps -c /etc/frps.toml
 ```
 
 Create a `docker-compose.yml` for client:
@@ -39,5 +39,5 @@ services:
     restart: unless-stopped
     volumes:
       - ./data/frpc.toml:/etc/frpc.toml
-    command: /frp/frpc -c /etc/frpc.toml
+    command: frpc -c /etc/frpc.toml
 ```

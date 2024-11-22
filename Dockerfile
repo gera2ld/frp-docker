@@ -21,4 +21,6 @@ WORKDIR /frp
 
 COPY --from=downloader /frp /frp
 
-CMD ["/frp/frps", "-c", "/etc/frps.toml"]
+ADD entrypoint.sh /frp/entrypoint.sh
+
+ENTRYPOINT ["/frp/entrypoint.sh"]
