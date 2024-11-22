@@ -21,6 +21,4 @@ WORKDIR /frp
 
 COPY --from=downloader /frp /frp
 
-ADD frps.toml /etc/frps.toml
-
 CMD ["/frp/frps", "-c", "/etc/frps.toml"]
